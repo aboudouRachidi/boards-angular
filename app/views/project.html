@@ -1,0 +1,36 @@
+<h1 class="ui header">{{projectCtrl.project.name}}
+<div class="sub header">{{projectCtrl.project.descriptif}}</div>
+</h1>
+
+<table class="ui celled table">
+	<thead>
+		<tr>
+			<th><i class="user icon"></i> Stories</th>
+			<th>Tasks</th>
+			<th>Done ?</th>
+			<th>Developer</th>
+		</tr>
+		
+	</thead>
+	<tbody>
+		<tr data-ng-repeat="story in projectCtrl.project.stories">
+			<td><span class="ui label">{{story.code}}</span> {{story.descriptif}}
+			<button class="ui right floated basic icon button"><i class="edit icon"></i></button>
+			</td>
+			<td class="center aligned"><span class="ui circular orange label">{{story.tasks.length}}</span></td>
+			<td class="center aligned"><i data-ng-show="story.closed()" class="large check circle outline icon"></i></td>
+			<td>
+			<div id="ddDev-{{story.code}}" class="ui dropdown selection">
+				<input name="devSel" type="hidden" data-ng-value="story.developer._id.$oid">
+				<div class="default text">Select dev...</div> <i class="icon dropdown"></i>
+				<div class="menu">
+					<a class="item" data-value="0" data-ng-click="projectCtrl.removeDev(story)">Select dev...</a>
+					<a class="item" data-ng-repeat="item in projectCtrl.data['Developer']" data-ng-class="{'active selected': item._id.$oid == story.developer._id.$oid}" data-ng-click="projectCtrl.setDev(dev,story)" data-value="{{item._id.$oid}}">
+						{{item.identity}}
+					</a>
+				</div>
+			</div>{{projectCtrl.dropdown(story.code)}}
+			</td>
+		</tr>
+	</tbody>
+</table>

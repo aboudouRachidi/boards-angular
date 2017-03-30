@@ -1,0 +1,53 @@
+<h1 class="ui header">Projets ({{projectsCtrl.data.Developer[0].identity}})</h1>
+<div class="ui divided grid">
+	<div class="eight wide column">
+		<h2 class="ui header">Mes projets</h2>
+		<div class="ui items">
+		  <div class="item" data-ng-repeat="project in projectsCtrl.projectsOwner">
+		    <div class="image">
+		      <img src="https://semantic-ui.com/images/wireframe/image.png">
+		    </div>
+		    <div class="content">
+		      <a class="header" data-ng-href="project/{{project._id.$oid}}">{{project.name}}</a>
+		      <div class="meta">
+		        <span></span>
+		      </div>
+		      <div class="description">
+		        {{project.descriptif}}
+		        <div>
+		        <a class="ui label" data-ng-class="{green: story.closed()}" data-ng-repeat="story in project.stories">{{story.code}}</a>
+		        </div>
+		      </div>
+		      <div class="extra">
+		        {{project.owner.identity}}
+		      </div>
+		    </div>
+		  </div>
+		</div>
+	</div>
+	<div class="eight wide column">
+		<h2 class="ui header">Mes participations</h2>
+		<div class="ui items">
+		  <div class="item" data-ng-repeat="project in projectsCtrl.projectsWorker">
+		    <div class="image">
+		      <img src="https://semantic-ui.com/images/wireframe/image.png">
+		    </div>
+		    <div class="content">
+		      <a class="header" data-ng-href="project/{{project._id.$oid}}">{{project.name}}</a>
+		      <div class="meta">
+		        <span></span>
+		      </div>
+		      <div class="description">
+		        {{project.descriptif}}
+		        <div>
+		        <a class="ui label" data-ng-class="{green: story.closed()}" data-ng-repeat="story in project.stories">{{story.code}}</a>
+		        </div>
+		      </div>
+		      <div class="extra">
+		        {{project.owner.identity}}
+		      </div>
+		    </div>
+		  </div>
+		</div>
+	</div>
+</div>

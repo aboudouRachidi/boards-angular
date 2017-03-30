@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html data-ng-app="Boards" data-ng-cloak>
+<head>
+<meta charset="UTF-8">
+<title>Boards</title>
+	<base href="/boards-angular/"/>
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.7/semantic.min.css">
+	<link rel="stylesheet" type="text/css" href="public/styles.css">
+</head>
+<body>
+	<header>
+	<div class="ui inverted container secondary menu">
+		<div class="item">
+			<img src="https://semantic-ui.com/images/logo.png">
+		</div>
+		<a class="item" href="home">
+			Projects
+		</a>
+	</div>
+	</header>
+	<div class="ui container">
+		<div data-ng-view></div>
+	</div>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular-route.min.js"></script>
+	<script src="app/bundle.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.7/semantic.min.js"></script>
+</body>
+</html>
