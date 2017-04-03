@@ -3,3 +3,13 @@ header{
 	background : #1B1C1D;
 	margin-bottom: 20px;
 }
+
+.addUS-left{
+	margin-left:40px ;
+	margin-right:40px ;
+	margin-top:20px ;
+	margin-bottom:20px;
+	align:left;
+	width:60%
+	   
+}

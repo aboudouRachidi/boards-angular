@@ -22,6 +22,12 @@ module.exports=function(daoService,$routeParams){
 		$("#ddDev-B22").dropdown();
 	};
 	
+	this.addUS=function(){
+		$('.ui.modal')
+		.modal('show')
+		;
+		};
+	
 	this.dropdown=function(code){
 		$("#ddDev-"+code).dropdown();
 	};

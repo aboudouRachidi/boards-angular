@@ -2,6 +2,61 @@
 <div class="sub header">{{projectCtrl.project.descriptif}}</div>
 </h1>
 
+<button id="add" class="ui right floated icon  green button" data-ng-click="projectCtrl.addUS()" ><i class="add icon"></i>Nouvelle Story</button>
+
+
+<!--  Popup creation de US -->
+<div class="ui modal">
+  <i class="close icon"></i>
+  <div class="header">
+    Créer une nouvelle Story
+  </div>
+
+  <div class="addUS-left">
+  <form class="ui form">
+
+	    <input type="text" name="Nom" placeholder="Nom">
+	   <div class="field">
+	    <textarea placeholder="descriptif"></textarea>
+	  </div> 
+	  
+	  <div id="ddDev-{{story.code}}" class="ui dropdown selection">
+				<input name="devSel" type="hidden" data-ng-value="story.developer._id.$oid">
+				<div class="default text">Select dev...</div> <i class="icon dropdown"></i>
+				<div class="menu">
+					<a class="item" data-value="0" >Select dev...</a>
+					<a class="item" data-ng-repeat="item in projectCtrl.data['Developer']"   data-value="{{item._id.$oid}}">
+						{{item.identity}}
+					</a>
+				</div>
+			</div>{{projectCtrl.dropdown(story.code)}}
+			
+			  <div class="actions">
+    <div class="ui positive right icon button">
+      Ajouter
+    </div>
+  </div>
+  </form>
+  </div>
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <table class="ui celled table">
 	<thead>
 		<tr>
@@ -15,6 +70,7 @@
 	<tbody>
 		<tr data-ng-repeat="story in projectCtrl.project.stories">
 			<td><span class="ui label">{{story.code}}</span> {{story.descriptif}}
+			<button class="ui right floated basic icon  red button"><i class="trash icon"></i> </button>
 			<button class="ui right floated basic icon button"><i class="edit icon"></i></button>
 			</td>
 			<td class="center aligned"><span class="ui circular orange label">{{story.tasks.length}}</span></td>

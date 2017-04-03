@@ -17,6 +17,11 @@ module.exports=function($sceDelegateProvider,$routeProvider,$locationProvider){
 		templateUrl: 'app/views/project.html',
 		controller: 'ProjectController',
 		controllerAs: 'projectCtrl'
+	}).
+	when('/project/newUS/:_id', {
+		templateUrl: 'app/views/newUs.html',
+		controller: 'USController',
+		controllerAs: 'usCtrl'
 	});
 	if(window.history && window.history.pushState){
 		$locationProvider.html5Mode(true);
@@ -58,6 +63,12 @@ module.exports=function(daoService,$routeParams){
 	this.click=function(){
 		$("#ddDev-B22").dropdown();
 	};
+	
+	this.addUS=function(){
+		$('.ui.modal')
+		.modal('show')
+		;
+		};
 	
 	this.dropdown=function(code){
 		$("#ddDev-"+code).dropdown();
