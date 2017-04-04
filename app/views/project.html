@@ -77,14 +77,41 @@
   <div class="header">
    Modifier Story <a class="ui teal tag label">{{story.code}}</a>
   </div>
-
-  <div class="addUS-left">
-  <form class="ui form">
-
+ <br/>
+  <div class="ui grid">
+  
+		<div class="ten wide column">
+		<form class="ui form">
+		 <div class="field">
+		<label>Code</label>
 	    <input type="text" name="code" placeholder="Code" value="{{story.code}}">
+	    </div>
 	   <div class="field">
+	   <label>Descriptif</label>
 	    <textarea placeholder="descriptif" >{{story.descriptif}}</textarea>
 	  </div> 
+	  </form>
+	  </div>
+	 
+	  
+		<div class="six wide column">
+		<label>Taches</label>
+				<div class="ui relaxed divided list">
+		  <div class="item" data-ng-repeat="item in story.tasks">
+		    <i class="large checkmark middle aligned icon"></i>
+		    <div class="content">
+		      <a class="header">{{item.content}}</a>
+		     <!--  <div class="description">Updated 10 mins ago</div> -->
+		    </div>
+		  </div>
+		</div>
+			<div class="ui action input">
+			  <input type="text" placeholder="Nouvelle tache">
+			  <button class="ui icon button" ng-submit="addRow()">
+			    <i class="add icon"></i>
+			  </button>
+			</div>
+	  </div>
 	  
 
 			
@@ -93,7 +120,6 @@
       Ajouter
     </div>
   </div>
-  </form>
   </div>
 </div>
 

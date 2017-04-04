@@ -42,6 +42,8 @@ module.exports=function(daoService,$routeParams){
 		
 	};
 	
+
+	
 	
 	this.dropdown=function(code){
 		$("#ddDev-"+code).dropdown();
