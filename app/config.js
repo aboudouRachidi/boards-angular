@@ -14,6 +14,16 @@ module.exports=function($sceDelegateProvider,$routeProvider,$locationProvider){
 		templateUrl: 'app/views/newUs.html',
 		controller: 'USController',
 		controllerAs: 'usCtrl'
+	}).
+	when('/home/createProject', {
+		templateUrl: 'app/views/project/create.html',
+		controller: 'ProjectController',
+		controllerAs: 'projectCtrl'
+	}).
+	when('/home/editProject/:_id', {
+		templateUrl: 'app/views/project/edit.html',
+		controller: 'ProjectController',
+		controllerAs: 'projectCtrl'
 	});
 	if(window.history && window.history.pushState){
 		$locationProvider.html5Mode(true);

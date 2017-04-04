@@ -1,0 +1,31 @@
+<div class="ui green segment"><h3 class="ui massive label">Modifier projet <a class="ui teal tag label">{{projectCtrl.project.name}}</a></h3> </div>
+<div class="ui black segment">
+    <form class="ui form">
+
+        <div class="field">
+            <label>Nom du projet</label>
+            <input type="text" name="name" placeholder="Nom du projet" value="{{projectCtrl.project.name}}">
+        </div>
+
+        <div class="field">
+            <label>Description</label>
+            <textarea name="descriptif" placeholder="Description">{{projectCtrl.project.descriptif}}</textarea>
+        </div>
+
+        <div class="field">
+            <div class="field">
+                <label>Date de debut</label>
+                <input type="text" placeholder="JJ//MM/AAAA" value="{{projectCtrl.project.startDate}}">
+            </div>
+        </div>
+
+        <div class="field">
+            <label>Propriétaire</label>
+            <input readonly="" type="text" name="owner" value="{{projectCtrl.project.owner.identity}}">
+        </div>
+
+        <button class="ui button green" type="submit">Valider</button>
+
+
+    </form>
+</div>
