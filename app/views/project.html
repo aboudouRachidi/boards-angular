@@ -6,7 +6,7 @@
 
 
 <!--  Popup creation de US -->
-<div class="ui modal">
+<div class="ui modal" id="modalCreate">
   <i class="close icon"></i>
   <div class="header">
     Créer une nouvelle Story
@@ -20,19 +20,10 @@
 	    <textarea placeholder="descriptif"></textarea>
 	  </div> 
 	  
-	  <div id="ddDev-{{story.code}}" class="ui dropdown selection">
-				<input name="devSel" type="hidden" data-ng-value="story.developer._id.$oid">
-				<div class="default text">Select dev...</div> <i class="icon dropdown"></i>
-				<div class="menu">
-					<a class="item" data-value="0" >Select dev...</a>
-					<a class="item" data-ng-repeat="item in projectCtrl.data['Developer']"   data-value="{{item._id.$oid}}">
-						{{item.identity}}
-					</a>
-				</div>
-			</div>{{projectCtrl.dropdown(story.code)}}
+
 			
 			  <div class="actions">
-    <div class="ui positive right icon button">
+    <div class="ui positive right icon button" data-ng-click="projectCtrl.createUS()">
       Ajouter
     </div>
   </div>
@@ -43,8 +34,12 @@
 
 </div>
 
+<!-- daoService.get(this.data,"Tag"); -->
 
 
+
+
+</div>
 
 
 
@@ -71,7 +66,40 @@
 		<tr data-ng-repeat="story in projectCtrl.project.stories">
 			<td><span class="ui label">{{story.code}}</span> {{story.descriptif}}
 			<button class="ui right floated basic icon  red button"><i class="trash icon"></i> </button>
-			<button class="ui right floated basic icon button"><i class="edit icon"></i></button>
+			<button class="ui right floated basic icon button" data-ng-click="projectCtrl.modifUS()"><i class="edit icon"></i></button>
+			
+			
+			
+			
+			<!--  Popup modif de US -->
+<div class="ui large modal" id="modalModif">
+  <i class="close icon"></i>
+  <div class="header">
+   Modifier Story <a class="ui teal tag label">{{story.code}}</a>
+  </div>
+
+  <div class="addUS-left">
+  <form class="ui form">
+
+	    <input type="text" name="code" placeholder="Code" value="{{story.code}}">
+	   <div class="field">
+	    <textarea placeholder="descriptif" >{{story.descriptif}}</textarea>
+	  </div> 
+	  
+
+			
+			  <div class="actions">
+    <div class="ui positive right icon button" data-ng-click="projectCtrl.createUS()">
+      Ajouter
+    </div>
+  </div>
+  </form>
+  </div>
+</div>
+
+
+
+			
 			</td>
 			<td class="center aligned"><span class="ui circular orange label">{{story.tasks.length}}</span></td>
 			<td class="center aligned"><i data-ng-show="story.closed()" class="large check circle outline icon"></i></td>
