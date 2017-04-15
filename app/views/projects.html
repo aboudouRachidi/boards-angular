@@ -1,7 +1,12 @@
 <h1 class="ui header">Projets ({{projectsCtrl.data.Developer[0].identity}})</h1>
 <div class="ui divided grid">
 	<div class="eight wide column">
-		<h2 class="ui header">Mes projets</h2>
+		<h2 class="ui header">Mes projets
+			<a class="ui plus blue button" href="home/createProject">
+			<i class="plus icon"></i>
+			Nouveau projet
+			</a>
+		</h2>
 		<div class="ui items">
 		  <div class="item" data-ng-repeat="project in projectsCtrl.projectsOwner">
 		    <div class="image">
