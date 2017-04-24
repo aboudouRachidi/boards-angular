@@ -37,12 +37,17 @@ module.exports=function(daoService,$routeParams){
 	};
 	
 
-	this.createUS=function(){
-		
+	this.createUS=function(){		
+		db.Story.insert({code:console.log($scope.code),descriptif:console.log($scope.description),project:{self.project}});
 		
 	};
 	
-
+	this.addRow=function(){
+		self.tasks.rows.push();
+		
+		
+		
+	}
 	
 	
 	this.dropdown=function(code){
