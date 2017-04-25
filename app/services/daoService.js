@@ -38,6 +38,14 @@ module.exports=function($http){
 		return result;
 	};
 	
+	this.post = function (collection,object,callback) {
+		   $http.post(server+collection,object).then(function(resp){
+		      if(callback!=undefined){
+		         callback(resp);
+		      }
+		   });
+		}
+	
 	this.loadAll=function(data,callback){
 		self.get(data,"Project","","Project",function(projects){
 			self.get(data,"Story","","stories",function(stories){

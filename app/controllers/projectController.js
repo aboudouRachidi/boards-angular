@@ -1,4 +1,4 @@
-module.exports=function(daoService,$routeParams){
+module.exports=function(daoService,$routeParams,$http){
 	var self=this;
 	this.data={};
 	this.projectId=$routeParams._id;
@@ -37,9 +37,10 @@ module.exports=function(daoService,$routeParams){
 	};
 	
 
-	this.createUS=function(){		
-		db.Story.insert({code:console.log($scope.code),descriptif:console.log($scope.description),project:{self.project}});
+	this.createUS=function(){
 		
+		daoService.post("Story",self.project,function (resp){console.log(resp)});
+	     	
 	};
 	
 	this.addRow=function(){

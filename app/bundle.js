@@ -50,7 +50,7 @@ module.exports=function(){
 	};
 };
 },{}],4:[function(require,module,exports){
-module.exports=function(daoService,$routeParams){
+module.exports=function(daoService,$routeParams,$http){
 	var self=this;
 	this.data={};
 	this.projectId=$routeParams._id;
@@ -91,8 +91,16 @@ module.exports=function(daoService,$routeParams){
 
 	this.createUS=function(){
 		
-		
+		daoService.post("Story",self.project,function (resp){console.log(resp)});
+	     	
 	};
+	
+	this.addRow=function(){
+		self.tasks.rows.push();
+		
+		
+		
+	}
 	
 	
 	this.dropdown=function(code){
@@ -167,6 +175,14 @@ module.exports=function($http){
 		}
 		return result;
 	};
+	
+	this.post = function (collection,object,callback) {
+		   $http.post(server+collection,object).then(function(resp){
+		      if(callback!=undefined){
+		         callback(resp);
+		      }
+		   });
+		}
 	
 	this.loadAll=function(data,callback){
 		self.get(data,"Project","","Project",function(projects){
