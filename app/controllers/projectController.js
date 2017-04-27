@@ -1,4 +1,4 @@
-module.exports=function(daoService,$routeParams,$http){
+module.exports=function(daoService,$routeParams,appService,$http){
 	var self=this;
 	this.data={};
 	this.projectId=$routeParams._id;
@@ -37,6 +37,7 @@ module.exports=function(daoService,$routeParams,$http){
 	};
 	
 	this.createProject=function () {
+		self.project.owner = appService.user;
 		daoService.post("Project",self.project,function (resp) {
 			console.log(resp)
 		});

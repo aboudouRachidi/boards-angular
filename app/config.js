@@ -12,7 +12,7 @@ module.exports=function($sceDelegateProvider,$routeProvider,$locationProvider){
 	}).
 	when('/project/newUS/:_id', {
 		templateUrl: 'app/views/newUs.html',
-		controller: 'USController',
+		controller: 'usController',
 		controllerAs: 'usCtrl'
 	}).
 	when('/home/createProject', {
