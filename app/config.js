@@ -15,6 +15,11 @@ module.exports=function($sceDelegateProvider,$routeProvider,$locationProvider){
 		controller: 'usController',
 		controllerAs: 'usCtrl'
 	}).
+	when('/project/:_id/createUs', {
+		templateUrl: 'app/views/newUs.html',
+		controller: 'UsController',
+		controllerAs: 'usCtrl'
+	}).
 	when('/home/createProject', {
 		templateUrl: 'app/views/project/create.html',
 		controller: 'ProjectController',

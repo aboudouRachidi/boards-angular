@@ -1,13 +1,14 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 angular.module("Boards",["ngRoute"])
-    .service("appService",[require("./services/appService")])
+.service("appService",[require("./services/appService")])
 .controller("MainController",[require("./controllers/mainController")])
 .controller("ProjectsController",["DAOService","appService",require("./controllers/projectsController")])
 .controller("ProjectController",["DAOService","$routeParams","appService","$http",require("./controllers/projectController")])
+.controller("UsController",["DAOService","$routeParams","appService","$http",require("./controllers/usController")])
 .config(['$sceDelegateProvider','$routeProvider','$locationProvider',require("./config")])
 .service("DAOService",["$http",require("./services/daoService")]);
 
-},{"./config":2,"./controllers/mainController":3,"./controllers/projectController":4,"./controllers/projectsController":5,"./services/appService":6,"./services/daoService":7}],2:[function(require,module,exports){
+},{"./config":2,"./controllers/mainController":3,"./controllers/projectController":4,"./controllers/projectsController":5,"./controllers/usController":6,"./services/appService":7,"./services/daoService":8}],2:[function(require,module,exports){
 module.exports=function($sceDelegateProvider,$routeProvider,$locationProvider){
 	$routeProvider.
 	when('/home', {
@@ -23,6 +24,11 @@ module.exports=function($sceDelegateProvider,$routeProvider,$locationProvider){
 	when('/project/newUS/:_id', {
 		templateUrl: 'app/views/newUs.html',
 		controller: 'usController',
+		controllerAs: 'usCtrl'
+	}).
+	when('/project/:_id/createUs', {
+		templateUrl: 'app/views/newUs.html',
+		controller: 'UsController',
 		controllerAs: 'usCtrl'
 	}).
 	when('/home/createProject', {
@@ -145,13 +151,38 @@ module.exports=function(daoService,appService){
 	});
 };
 },{}],6:[function(require,module,exports){
+module.exports=function(daoService,$routeParams,appService,$http){
+	var self=this;
+	this.data={};
+	this.projectId=$routeParams._id;
+	this.loaded=false;
+	this.project={};
+	this.story={};
+	if(!this.loaded)
+		daoService.loadAll(this.data,function(){self.load();self.loaded=true;});
+	else
+		this.load();
+	this.load=function(){
+		self.project=daoService.getById(this.data["Project"],self.projectId);
+	};
+
+	this.createStory=function () {
+		self.story.project = self.project;
+		daoService.post("Story",self.story,function (resp) {
+			console.log(resp)
+		});
+	};
+	
+	
+}
+},{}],7:[function(require,module,exports){
 /**
  * Created by RACHIDI on 27/04/2017.
  */
 module.exports=function(){
     this.user=undefined;
 }
-},{}],7:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 module.exports=function($http){
 	var self=this;
 	this.data={};

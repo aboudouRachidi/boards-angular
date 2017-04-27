@@ -1,1 +1,15 @@
 <h1>test</h1>
+<form class="ui form">
+    <div class="field">
+        <input type="text" name="code" data-ng-model="usCtrl.story.code" placeholder="code">
+    </div>
+    <div class="field">
+        <textarea name="descriptif" placeholder="descriptif" data-ng-model="usCtrl.story.descriptif"></textarea>
+    </div>
+
+    <div class="actions">
+        <div class="ui positive right icon button" data-ng-click="usCtrl.createStory()">
+            Ajouter
+        </div>
+    </div>
+</form>
