@@ -88,6 +88,11 @@ module.exports=function(daoService,$routeParams,$http){
 		;
 	};
 	
+	this.createProject=function () {
+		daoService.post("Project",self.project,function (resp) {
+			console.log(resp)
+		});
+	};
 
 	this.createUS=function(){
 		
